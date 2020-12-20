@@ -46,12 +46,9 @@ host('api.docfacil.me')
 task('generate:swagger', function () {
     run('cd {{release_path}} && php artisan l5-swagger:generate');
 });
-
 task('build', function () {
     run('cd {{release_path}} && build');
 });
-
-// Tasks
 task('reload:php-fpm', function () {
     run('sudo /etc/init.d/php7.4-fpm restart'); // Using SysV Init scripts
 });
