@@ -1,0 +1,56 @@
+version: '3'
+services:
+  pg:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: pg
+    restart: always
+    volumes:
+      - pg-data-docfacil:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpassword
+    network_mode: bridge
+  redis:
+    container_name: redis
+    image: redis
+#    command: redis-server --requirepass Redis2020!
+    volumes:
+      - redis-data:/data:cached
+    ports:
+      - "6379:6379"
+    network_mode: bridge
+  cache:
+    image: memcached:1.6-alpine
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html:delegated
+      - ./docker-configs/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    network_mode: bridge
+    depends_on:
+      - php
+    links:
+      - php
+  php:
+    build:
+      context: .
+      dockerfile: docker-configs/Dockerfile
+    container_name: php
+    volumes:
+      - ./:/var/www/html:delegated
+      - ./docker-configs/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+      - "9000:9000"
+    environment:
+      REDIS_PORT: 6379
+    network_mode: bridge
+    links:
+      - pg
+      - redis
+volumes:
+  pg-data-docfacil:
+  redis-data:

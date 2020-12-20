@@ -1,0 +1,57 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Docfacil.me",
+        "contact": "fabio@fabiofarias.com.br",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.docfacil.me",
+            "description": "Api Develop"
+        },
+        {
+            "url": "/app/App/Api"
+        }
+    ],
+    "paths": {
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show existing user by id",
+                "description": "Return user data",
+                "operationId": "showUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

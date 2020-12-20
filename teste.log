@@ -1,0 +1,6 @@
+Auth Controller (Tests\Feature\App\Api\Controllers\AuthController)
+ [x] Register
+ [x] Exist user
+ [x] Login
+ [x] Me
+
