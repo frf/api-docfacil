@@ -1,11 +1,11 @@
 <h4 align="center">
-    Docfacil.me é uma plataforma para envio de documentos como identidade, cpf, carteira do plano de saúde etc.. <br>
+Docfacil.me is a platform for sending documents such as ID, CPF, health insurance card, etc. .. <br>
 </h4>
 <p align="center">
-Esta plataforma funciona com um envio simples de uma imagem tirada do aplicativo, esta imagem é guardada de forma
- encryptada no nosso servidor onde somente o próprio dono tem acesso. <br>
- Esta idéia veio de uma dificuldade de eu vi de alguns idosos precisarem de forma digital alguns dos seus documentos
-  e não os encontravam, desta forma o aplicativo mobile vai concentrar todos os seus documentos.
+This platform works with a simple upload of an image taken from the application, this image is saved
+  encrypted on our server where only the owner himself has access. <br>
+  This idea came from a difficulty I saw that some elderly people need digitally some of their documents
+   and did not find them, so the mobile app will concentrate all your documents.
 </p>
 <p align="center">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/frf/docfacil.me.svg">
@@ -28,13 +28,13 @@ Esta plataforma funciona com um envio simples de uma imagem tirada do aplicativo
 ![App Screenshot](https://docfacil.me/images/screens/screen_apps.png)
 <p align="center">
   <a href="https://docfacil.me" target="_blank">
-    <h3 align="center">Demo</h3>
+    <h3 align="center">Demo under construction</h3>
   </a>
 </p>
 
 ## :smiley: About
 
-Este projeto foi desenvolvido utilizazndo Laravel 8, PHP 7.4, Passport, Postgres, DDD
+This project was developed using Laravel 8, PHP 7.4, Passport, Postgres, DDD
 
 ## :computer: Technologies
 This project was developed with the following technologies:

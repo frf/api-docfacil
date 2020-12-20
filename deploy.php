@@ -11,7 +11,7 @@ set('application', 'api-docfacil');
 // Project repository
 set('repository', 'git@github.com:frf/api-docfacil.git');
 
-set('slack_webhook', 'https://hooks.slack.com/services/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');
+set('slack_webhook', 'https://hooks.slack.com/services/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');
 set('slack_title', 'Application: {{application}}');
 set('slack_text', '_{{user}}_ deploying branch: `{{branch}}` to *https://{{hostname}}*');
 set('slack_success_text', 'Deploy *{{hostname}}* successful');
@@ -46,12 +46,9 @@ host('api.docfacil.me')
 task('generate:swagger', function () {
     run('cd {{release_path}} && php artisan l5-swagger:generate');
 });
-
 task('build', function () {
     run('cd {{release_path}} && build');
 });
-
-// Tasks
 task('reload:php-fpm', function () {
     run('sudo /etc/init.d/php7.4-fpm restart'); // Using SysV Init scripts
 });
