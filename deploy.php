@@ -9,7 +9,7 @@ require 'recipe/slack.php';
 set('application', 'api-docfacil');
 
 // Project repository
-set('repository', 'git@github.com:frf/api.docfacil.me.git');
+set('repository', 'git@github.com:frf/api-docfacil.git');
 
 set('slack_webhook', 'https://hooks.slack.com/services/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');
 set('slack_title', 'Application: {{application}}');
