@@ -4,3 +4,7 @@ Auth Controller (Tests\Feature\App\Api\Controllers\AuthController)
  [x] Login
  [x] Me
 
+File Controller (Feature\App\Api\Controllers\FileController)
+ [x] Login
+ [x] Upload base 64
+

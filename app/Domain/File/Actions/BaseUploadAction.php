@@ -57,7 +57,8 @@ class BaseUploadAction
         return $this->uploadGeneral($data);
     }
 
-    protected function uploadGeneral($data) {
+    protected function uploadGeneral($data)
+    {
         return $this->uploadS3($data);
     }
 
@@ -137,7 +138,8 @@ class BaseUploadAction
         ];
     }
 
-    protected function processUpload(FileBag $fileBag) : array {
+    protected function processUpload(FileBag $fileBag) : array
+    {
         $data = $fileBag->attributes();
 
         if (!$data['user_id'] && auth()->user()->hasRole('sa')) {
@@ -153,8 +155,6 @@ class BaseUploadAction
         $uploadData = $this->uploadToCdn($dataToUpload);
         $dataHydrate = $this->hydrate($uploadData);
 
-        dd($dataHydrate);
-
         $dataHydrate['type'] = $data['type'];
         $dataHydrate['user_id'] = $data['user_id'];
 
@@ -165,7 +165,8 @@ class BaseUploadAction
         return $dataHydrate;
     }
 
-    protected function createName($name): string {
+    protected function createName($name): string
+    {
         return (!$name) ?
             preg_replace('/[^A-Za-z0-9\.]/i', ' ', $name) :
             'doc-facil.png';
