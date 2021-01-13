@@ -5,7 +5,7 @@ namespace Domain\File\Actions;
 use Domain\File\Exceptions\DeleteFileException;
 use Domain\File\Models\File;
 use Domain\File\Repositories\FileRepository;
-use App\Core\Exceptions\ResourceNotFoundException;
+use App\Exceptions\ResourceNotFoundException;
 use Illuminate\Support\Facades\Http;
 
 class DeleteFileAction

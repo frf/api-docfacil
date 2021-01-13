@@ -4,7 +4,7 @@
 namespace Domain\User\Repositories;
 
 use Domain\User\Models\User;
-use App\Core\Repositories\Repository;
+use App\Repositories\Repository;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 

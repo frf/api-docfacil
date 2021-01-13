@@ -2,7 +2,7 @@
 
 namespace Domain\User\Actions;
 
-use App\Core\Exceptions\BadRequestException;
+use App\Exceptions\BadRequestException;
 use Carbon\Carbon;
 use Domain\User\Bags\UserBag;
 use Domain\User\Models\User;
@@ -21,7 +21,6 @@ use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\ResponseTypes\BearerTokenResponse;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class AuthUserAction
