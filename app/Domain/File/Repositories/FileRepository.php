@@ -19,11 +19,21 @@ class FileRepository extends Repository
         return File::class;
     }
 
-    public function deleteProfilePictures($id)
+    public function all($columns = array('*'))
     {
-        return $this->deleteWhere([
-            'user_id' => $id,
-            'type' => File::TYPE_PROFILE_PICTURE
-        ]);
+        $this->applyCriteria();
+        return QueryBuilder::for($this->model())
+            ->allowedFilters(
+                AllowedFilter::partial('name'),
+            )
+            ->allowedSorts('id', 'name', 'created_at')
+            ->paginate();
+    }
+
+    public function find($id, $columns = array('*'))
+    {
+        $this->applyCriteria();
+        return QueryBuilder::for($this->model())
+            ->find($id, $columns);
     }
 }

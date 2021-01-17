@@ -3,6 +3,7 @@
 namespace Domain\User\Actions;
 
 use App\Exceptions\BadRequestException;
+use App\Exceptions\UnauthorizedException;
 use Carbon\Carbon;
 use Domain\User\Bags\UserBag;
 use Domain\User\Models\User;
@@ -22,13 +23,13 @@ use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\Exception\UniqueTokenIdentifierConstraintViolationException;
 use League\OAuth2\Server\ResponseTypes\BearerTokenResponse;
 
-
 class AuthUserAction
 {
     protected UserRepository $userRepository;
     protected const CLIENT_AUTH = 'api-docfacil';
 
-    public function __construct(UserRepository $userRepository) {
+    public function __construct(UserRepository $userRepository)
+    {
         $this->userRepository = $userRepository;
     }
 
@@ -37,18 +38,12 @@ class AuthUserAction
         /** @var User $user */
         $user = $this->userRepository->findBy('email', $userBag->email);
 
-        // Validate Company
-        if(!$user) {
-            return response()->json([
-                'error' => 'Invalid credentials'
-            ], 401);
+        if (!$user) {
+            throw new UnauthorizedException();
         }
 
-        // Validate Password
         if (!Hash::check($userBag->password, $user->password)) {
-            return response()->json([
-                'error' => 'Invalid credentials 2'
-            ], 401);
+            throw new UnauthorizedException();
         }
 
         $client = \Laravel\Passport\Client::where([

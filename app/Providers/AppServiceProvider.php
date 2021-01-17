@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use File;
 
@@ -27,13 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         if (env('APP_ENV') == 'local') {
             DB::listen(function ($query) {
-                File::append(
-                    storage_path('/logs/query.log'),
-                    '[' . date('Y-m-d H:i:s') . ']' . PHP_EOL .
-                    $query->sql . ' [' . implode(', ', $query->bindings) . ']' .
-                    PHP_EOL .
-                    PHP_EOL
-                );
+                Log::info('Query',[
+                    'sql' => $query->sql,
+                    'bindings' => $query->bindings
+                ]);
             });
         }
     }

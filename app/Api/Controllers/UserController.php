@@ -32,30 +32,7 @@ class UserController extends Controller
         $userBag = UserBag::fromRequest($createUserRequest->validated());
         return UserResource::make($this->createUserAction->execute($userBag));
     }
-    /**
-     * @OA\Get(
-     *      path="/users/{id}",
-     *      operationId="showUser",
-     *      tags={"Users"},
-     *      summary="Show existing user by id",
-     *      description="Return user data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(response=200, description="Successful operation",),
-     *      @OA\Response(response=400, description="Bad Request"),
-     *      @OA\Response(response=403, description="Forbidden"),
-     *      @OA\Response(response=404, description="Resource Not Found")
-     *      ),
-     *      security={{ "apiAuth": {} }}
-     * )
-     */
+
     public function show($id)
     {
         $user = $this->userRepository->find($id);

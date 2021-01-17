@@ -20,23 +20,21 @@ class FireEvent extends Command
             'exp' => '23/28'
         ];
 
-        for($i=0; $i<40; $i++) {
-            $connection = new AMQPStreamConnection(
-                env('RABBITMQ_HOST'),
-                5672,
-                env('RABBITMQ_USER'),
-                env('RABBITMQ_PASSWORD'),
-                env('RABBITMQ_VHOST'));
+        $connection = new AMQPStreamConnection(
+            env('RABBITMQ_HOST'),
+            5672,
+            env('RABBITMQ_USER'),
+            env('RABBITMQ_PASSWORD'),
+            env('RABBITMQ_VHOST'));
 
-            $channel = $connection->channel();
-            $channel->queue_declare('order', false, true, false, false);
-            $channel->exchange_declare('application-showcase', 'direct', false, false, false);
+        $channel = $connection->channel();
+        $channel->queue_declare('order', false, true, false, false);
+        $channel->exchange_declare('application-showcase', 'direct', false, false, false);
 
-            $msg = new AMQPMessage(json_encode($data));
-            $channel->basic_publish($msg, 'application-showcase');
+        $msg = new AMQPMessage(json_encode($data));
+        $channel->basic_publish($msg, 'application-showcase');
 
-            $channel->close();
-            $connection->close();
-        }
+        $channel->close();
+        $connection->close();
     }
 }

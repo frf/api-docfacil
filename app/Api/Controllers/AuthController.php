@@ -14,16 +14,16 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    protected CreateUserAction $registerUserAction;
+    protected CreateUserAction $createUserAction;
     protected AuthUserAction $authUserAction;
     protected SendMailAction $sendMailAction;
 
     public function __construct(
-        CreateUserAction $registerUserAction,
+        CreateUserAction $createUserAction,
         AuthUserAction $authUserAction,
         SendMailAction $sendMailAction
     ) {
-        $this->registerUserAction = $registerUserAction;
+        $this->createUserAction = $createUserAction;
         $this->authUserAction = $authUserAction;
         $this->sendMailAction = $sendMailAction;
     }
@@ -31,13 +31,13 @@ class AuthController extends Controller
     public function register(RegisterUserRequest $registerUserRequest)
     {
         $userBag = UserBag::fromRequest($registerUserRequest->validated());
-        $user = $this->registerUserAction->execute($userBag);
+        $user = $this->createUserAction->execute($userBag);
 
         if ($user instanceof User) {
             $this->sendMailAction->execute($user);
         }
 
-        return $user;
+        return $this->authUserAction->execute($userBag);
     }
 
     public function login(LoginUserRequest $loginUserRequest)

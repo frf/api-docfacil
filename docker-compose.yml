@@ -1,17 +1,5 @@
 version: '3'
 services:
-  pg:
-    image: postgres:alpine
-    ports:
-      - '5432:5432'
-    container_name: pg
-    restart: always
-    volumes:
-      - pg-data-docfacil:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pgpassword
-    network_mode: bridge
   redis:
     container_name: redis
     image: redis
@@ -49,8 +37,6 @@ services:
       REDIS_PORT: 6379
     network_mode: bridge
     links:
-      - pg
       - redis
 volumes:
-  pg-data-docfacil:
   redis-data:
