@@ -47,16 +47,17 @@ task('build', function () {
 });
 
 task('supervisor:execute', function () {
-    run('killall supervisord ');
-    run('/usr/bin/supervisord -c /var/www/ajudalocal/shared/supervisor.conf ');
+    run('killall -q supervisord ');
+    run('/usr/bin/supervisord -c {{deploy_path}}/shared/supervisor.conf ');
 });
 
 task('supervisor:upload', function() {
-    upload('supervisor.conf', '/var/www/ajudalocal/shared/supervisor.conf');
+    upload('supervisor.conf', '{{deploy_path}}/shared/supervisor.conf');
 });
 
 
 task('deploy', [
+    'supervisor:upload',
     'deploy:info',
     'deploy:prepare',
     'deploy:lock',
@@ -79,9 +80,7 @@ after('success', 'slack:notify:success');
 before('deploy', 'slack:notify');
 
 after('deploy', 'success');
-after('deploy', 'supervisor:upload');
-after('supervisor:upload', 'supervisor:execute');
-
+after('success', 'supervisor:execute');
 after('success', 'slack:notify:success');
 after('deploy:failed', 'deploy:unlock');
 after('deploy:failed', 'slack:notify:failure');
