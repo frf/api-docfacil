@@ -47,7 +47,7 @@ task('build', function () {
 });
 
 task('supervisor:execute', function () {
-    run('killall -q supervisord ');
+    run('sudo killall -q supervisord ');
     run('/usr/bin/supervisord -c {{deploy_path}}/shared/supervisor.conf ');
 });
 
