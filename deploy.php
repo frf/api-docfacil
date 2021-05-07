@@ -39,8 +39,8 @@ add('writable_dirs', [
 // Hosts
 host('api.docfacil.me')
     ->hostname('api.docfacil.me')
-    ->user('deployer')
-    ->set('deploy_path', '/var/www/html');
+    ->user('docfacil')
+    ->set('deploy_path', '/var/www/docfacil');
 
 task('build', function () {
     run('cd {{release_path}} && build');
