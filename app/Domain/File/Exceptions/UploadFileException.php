@@ -3,7 +3,7 @@
 
 namespace Domain\File\Exceptions;
 
-use App\Core\Exceptions\BaseException;
+use App\Exceptions\BaseException;
 
 class UploadFileException extends BaseException
 {

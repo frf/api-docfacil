@@ -39,13 +39,9 @@ add('writable_dirs', [
 // Hosts
 host('api.docfacil.me')
     ->hostname('api.docfacil.me')
-    ->user('deployer')
-    ->set('deploy_path', '/var/www/html');
+    ->user('docfacil')
+    ->set('deploy_path', '/var/www/docfacil');
 
-// Tasks
-task('generate:swagger', function () {
-    run('cd {{release_path}} && php artisan l5-swagger:generate');
-});
 task('build', function () {
     run('cd {{release_path}} && build');
 });
@@ -79,6 +75,5 @@ after('deploy', 'success');
 after('success', 'slack:notify:success');
 after('deploy:failed', 'deploy:unlock');
 after('deploy:failed', 'slack:notify:failure');
-after('deploy', 'generate:swagger');
 
 

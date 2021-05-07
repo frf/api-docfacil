@@ -1,0 +1,1280 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Select Application",
+        "contact": "your@email.com",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api-testing.sellect.dev/v1",
+            "description": "Api Select Develop"
+        }
+    ],
+    "paths": {
+        "/auth/eduzz": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Auth Eduzz",
+                "description": "Auth Eduzz",
+                "operationId": "authEduzz",
+                "requestBody": {
+                    "description": "Pass token data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "token"
+                                ],
+                                "properties": {
+                                    "token": {
+                                        "type": "string",
+                                        "example": "token"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/auth/me": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Auth Me",
+                "description": "Auth Me",
+                "operationId": "authMe",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Show existing categories",
+                "description": "Show categories data",
+                "operationId": "showCategories",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Create Categorie",
+                "description": "Create Categorie",
+                "operationId": "createCategorie",
+                "requestBody": {
+                    "description": "Pass Categorie data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "alias"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "categorie name"
+                                    },
+                                    "alias": {
+                                        "type": "string",
+                                        "example": "categorie-name"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Show existing categorie by id",
+                "description": "Show categorie data",
+                "operationId": "showCategorie",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "categorie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update existing categorie by id",
+                "description": "Return categorie data",
+                "operationId": "updateCategorie",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "categorie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "price",
+                                    "is_active",
+                                    "source_user_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "category one"
+                                    },
+                                    "alias": {
+                                        "type": "string",
+                                        "example": "category-one"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Delete existing categorie by id",
+                "description": "Delete categorie data",
+                "operationId": "deleteCategorie",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Categorie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/file/upload/base64": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload file base64",
+                "description": "Upload file base64",
+                "operationId": "uploadFile",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "file",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "type",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "product test"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1010"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "testimonials"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/file/upload/url": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload file url",
+                "description": "Upload file url",
+                "operationId": "uploadFile",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "file",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "type",
+                                    "name",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "example": "https://teste.com.br"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "product test"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1010"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "testimonials"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/file/upload/form": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload file form",
+                "description": "Upload file form",
+                "operationId": "uploadFile",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "file",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "type",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "product test"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1010"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "testimonials"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/file/{id}": {
+            "delete": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Delete a file",
+                "description": "Delete a file",
+                "operationId": "deleteFile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "File id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns a list of products",
+                "description": "Returns a object of products",
+                "operationId": "App\\Api\\Controllers\\ProductController::index",
+                "responses": {
+                    "200": {
+                        "description": "A list with products"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create Product",
+                "description": "Create Product",
+                "operationId": "createProduct",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "price",
+                                    "is_active",
+                                    "source_user_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "product one"
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "example": "99,00"
+                                    },
+                                    "is_active": {
+                                        "type": "bool",
+                                        "example": true
+                                    },
+                                    "source_user_id": {
+                                        "type": "integer",
+                                        "example": 100
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/products?filter[title]=marketing": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by title",
+                "description": "Filtering products by title",
+                "operationId": "productByTitle",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by title"
+                    }
+                }
+            }
+        },
+        "/products?filter[price]=997": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by exact price",
+                "description": "Filtering products by exact price",
+                "operationId": "productByPrice",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by exact price"
+                    }
+                }
+            }
+        },
+        "/products?filter[price_gt]=123.24": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by prices greater than...",
+                "description": "Filtering products by prices greater than",
+                "operationId": "productByPriceGreater",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by prices greater than"
+                    }
+                }
+            }
+        },
+        "/products?filter[commission_value_lte]=20": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by commission value lower than or equal...",
+                "description": "Filtering products by commission value lower than or equal...",
+                "operationId": "productByCommision",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by commission value lower than or equal..."
+                    }
+                }
+            }
+        },
+        "/products?filter[commission_pct_between]=20,40": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by commission percent between ??% and ??%",
+                "description": "Filtering products by commission percent between ??% and ??%",
+                "operationId": "productByCommisionBetween",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by commission percent between ??% and ??%"
+                    }
+                }
+            }
+        },
+        "/products?includes=categories,filter[categories.alias]=marketing": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Filtering products by where the category alias is...",
+                "description": "Filtering products by where the category alias is...",
+                "operationId": "productByCategorie",
+                "responses": {
+                    "200": {
+                        "description": "Filtering products by where the category alias is..."
+                    }
+                }
+            }
+        },
+        "/products?filter[validated_select]=1&include=product_materials": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns a list of select products",
+                "description": "Returns a object of select products",
+                "operationId": "selectProducts",
+                "responses": {
+                    "200": {
+                        "description": "A list with select products"
+                    }
+                }
+            }
+        },
+        "/products?filter[my_products]=1": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Return products of user",
+                "description": "Return products of user",
+                "operationId": "myProducts",
+                "responses": {
+                    "200": {
+                        "description": "A list products of user "
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Show existing product by id",
+                "description": "Return product data",
+                "operationId": "showProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update existing product",
+                "description": "Returns updated product data",
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "price",
+                                    "is_active",
+                                    "source_user_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "product one"
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "example": "99,00"
+                                    },
+                                    "is_active": {
+                                        "type": "bool",
+                                        "example": true
+                                    },
+                                    "source_user_id": {
+                                        "type": "integer",
+                                        "example": 100
+                                    },
+                                    "approval_status": {
+                                        "type": "string",
+                                        "example": "denied|approved|pending|waiting_approve"
+                                    },
+                                    "justify_status": {
+                                        "type": "string",
+                                        "example": "Seu produto foi negado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete a product",
+                "description": "Delete a product",
+                "operationId": "deleteProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/products/shelf/{shelfType}": {
+            "get": {
+                "tags": [
+                    "Shelf"
+                ],
+                "summary": "Returns a list of productsin shelf",
+                "description": "Returns a object of products shelf",
+                "operationId": "App\\Api\\Controllers\\ShelfController::index",
+                "parameters": [
+                    {
+                        "name": "shelfType",
+                        "in": "path",
+                        "description": "Shelf Type",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with products"
+                    }
+                }
+            }
+        },
+        "/users?filter[affiliates]=1": {
+            "get": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Get all affiliates",
+                "description": "Get all affiliates",
+                "operationId": "listAffiliates",
+                "responses": {
+                    "200": {
+                        "description": "A list with products"
+                    }
+                }
+            }
+        },
+        "/users?filter[affiliates]=1&tags=top-sales,affiliate": {
+            "get": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Get all affiliates with top sales tag",
+                "description": "Get all affiliates with top sales tag",
+                "operationId": "listAffiliatesTopSale",
+                "responses": {
+                    "200": {
+                        "description": "Get all affiliates with top sales tag"
+                    }
+                }
+            }
+        },
+        "/users?filter[affiliates]=1&tags=top-revenue,affiliate": {
+            "get": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Get all affiliates with top revenue tag ",
+                "description": "Get all affiliates with top revenue tag ",
+                "operationId": "listAffiliatesTopTag",
+                "responses": {
+                    "200": {
+                        "description": "Get all affiliates with top revenue tag "
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show existing users",
+                "description": "Return users data",
+                "operationId": "showUsers",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create user",
+                "description": "Create user",
+                "operationId": "createUser",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "your name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show existing user by id",
+                "description": "Return user data",
+                "operationId": "showUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update existing user by id",
+                "description": "Return user data",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "roles"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "your name"
+                                    },
+                                    "roles": {
+                                        "type": "string",
+                                        "example": "sa|user",
+                                        "description": "sa (admin) | user (operador)"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete existing user by id",
+                "description": "Delete user data",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/users/{id}/roles": {
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Add role in user",
+                "description": "Add role in user",
+                "operationId": "addRoleUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user roles",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "role"
+                                ],
+                                "properties": {
+                                    "roles": {
+                                        "type": "string",
+                                        "example": "rolename"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete role in user",
+                "description": "Delete role in user",
+                "operationId": "deleteRoleUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user roles",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "role"
+                                ],
+                                "properties": {
+                                    "roles": {
+                                        "type": "string",
+                                        "example": "rolename"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "oauth2": {
+                "type": "apiKey",
+                "description": "A short description for security scheme",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "oauth2": [
+                "read",
+                "write"
+            ]
+        }
+    ]
+}
