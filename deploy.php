@@ -37,8 +37,8 @@ add('writable_dirs', [
 ]);
 
 // Hosts
-host('api.docfacil.me')
-    ->hostname('api.docfacil.me')
+host('104.131.170.111')
+    ->hostname('104.131.170.111')
     ->user('docfacil')
     ->set('deploy_path', '/var/www/docfacil');
 
