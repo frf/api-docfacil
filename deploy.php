@@ -52,7 +52,7 @@ task('supervisor:execute', function () {
 });
 
 task('supervisor:upload', function() {
-    upload('supervisor.conf', 'shared/supervisor.conf');
+    upload('supervisor.conf', '/var/www/ajudalocal/shared/supervisor.conf');
 });
 
 
