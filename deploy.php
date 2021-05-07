@@ -45,9 +45,16 @@ host('104.131.170.111')
 task('build', function () {
     run('cd {{release_path}} && build');
 });
-task('reload:php-fpm', function () {
-    run('sudo /etc/init.d/php7.4-fpm restart'); // Using SysV Init scripts
+
+task('supervisor:execute', function () {
+    run('sudo killall supervisord ');
+    run('/usr/bin/supervisord -c /var/www/ajudalocal/shared/supervisor.conf ');
 });
+
+task('supervisor:upload', function() {
+    upload('supervisor.conf', 'shared/supervisor.conf');
+});
+
 
 task('deploy', [
     'deploy:info',
@@ -72,6 +79,9 @@ after('success', 'slack:notify:success');
 before('deploy', 'slack:notify');
 
 after('deploy', 'success');
+after('deploy', 'supervisor:upload');
+after('supervisor:upload', 'supervisor:execute');
+
 after('success', 'slack:notify:success');
 after('deploy:failed', 'deploy:unlock');
 after('deploy:failed', 'slack:notify:failure');
