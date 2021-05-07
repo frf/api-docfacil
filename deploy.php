@@ -47,12 +47,12 @@ task('build', function () {
 });
 
 task('supervisor:execute', function () {
-    run('sudo killall -q supervisord ');
-    run('/usr/bin/supervisord -c {{deploy_path}}/shared/supervisor.conf ');
+    run('killall -q supervisord ');
+    run('/usr/bin/supervisord -c /var/www/docfacil/shared/supervisor.conf ');
 });
 
 task('supervisor:upload', function() {
-    upload('supervisor.conf', '{{deploy_path}}/shared/supervisor.conf');
+    upload('supervisor.conf', '/var/www/docfacil/shared/supervisor.conf');
 });
 
 
