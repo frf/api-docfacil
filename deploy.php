@@ -81,6 +81,7 @@ before('deploy', 'slack:notify');
 
 after('deploy', 'success');
 after('success', 'supervisor:execute');
+
 after('success', 'slack:notify:success');
 after('deploy:failed', 'deploy:unlock');
 after('deploy:failed', 'slack:notify:failure');
